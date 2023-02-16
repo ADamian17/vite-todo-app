@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use './variables' as *;
+
+$bps: (
+  'mobile': $bp-mobile,
+  'desktop': $bp-desktop,
+);
+
+@mixin media-query($target) {
+  @debug map.get($bps, $target);
+}
