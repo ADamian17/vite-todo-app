@@ -4,8 +4,11 @@
 $bps: (
   'mobile': $bp-mobile,
   'desktop': $bp-desktop,
+  'desktop-lg': $bp-desktop-lg,
 );
 
 @mixin media-query($target) {
-  @debug map.get($bps, $target);
+  @media screen and (min-width: #{map.get($bps, $target)}) {
+    @content;
+  }
 }

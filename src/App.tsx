@@ -1,34 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useLayoutEffect, useState } from 'react'
+
+import AppContextProvider, { appContext } from './contexts/appContext';
+import MainHero from './components/MainHero';
 
 import "./styles/main.scss";
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches)
-  const icon = isDarkTheme ? "icon-sun" : "icon-moon";
-
-  const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    setIsDarkTheme(!isDarkTheme)
-  }
-
-
-  useEffect(() => {
-    const handleColorTheme = (e) => {
-      const newColorScheme = e.matches ? setIsDarkTheme(true) : setIsDarkTheme(false);
-      console.log(newColorScheme);
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleColorTheme);
-  }, [])
-
-
-
-
   return (
-    <>
-      <h1>Hello</h1>
-      <img src={`/icons/${icon}.svg`} alt="icon sun" onClick={handleClick} />
-    </>
+    <AppContextProvider>
+      <MainHero />
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sint, atque natus vel dolores totam obcaecati repellendus ipsa, voluptate ratione omnis consequatur ab incidunt, illo eos quibusdam inventore culpa deleniti?</p>
+    </AppContextProvider>
   )
 }
 
-export default App
+export default App;

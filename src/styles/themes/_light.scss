@@ -1,0 +1,15 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+@mixin light-theme-root {
+  :root.light {
+    --bg-color: #{$light-grayish-blue};
+    --text-color: #{$default-text-color-light};
+    --bg-hero-image: url('/images/bg-mobile-light.jpg');
+    --color-theme: light;
+
+    @include media-query('desktop') {
+      --bg-hero-image: url('/images/bg-desktop-light.jpg');
+    }
+  }
+}

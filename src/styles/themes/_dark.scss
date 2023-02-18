@@ -1,0 +1,15 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+@mixin dark-theme-root {
+  :root.dark {
+    --bg-color: #{$very-dark-blue};
+    --text-color: #{$default-text-color};
+    --bg-hero-image: url('/images/bg-mobile-dark.jpg');
+    --color-theme: dark;
+
+    @include media-query('desktop') {
+      --bg-hero-image: url('/images/bg-desktop-dark.jpg');
+    }
+  }
+}

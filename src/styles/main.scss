@@ -1,43 +1,21 @@
 @use './mixins' as *;
+@use './themes' as *;
+@use './variables' as *;
 
-:root {
-  --bg-color: yellow;
-  --text-color: red;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@include dark-theme-root;
+@include light-theme-root;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-:root.light {
-  --bg-color: #fff;
-  --text-color: #123;
-}
-
-:root.dark {
-  --bg-color: #121212;
-  --text-color: #45adfe;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--bg-color);
+  color-scheme: var(--color-theme);
   color: var(--text-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: red;
-    --text-color: yellow;
-    // background-color: var(--bg-color);
-    // color: var(--text-color);
-  }
+  font-family: $default-font-family;
+  font-weight: $default-font-weight-regular;
+  min-height: 100vh;
 }
