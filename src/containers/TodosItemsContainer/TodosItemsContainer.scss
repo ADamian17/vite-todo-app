@@ -1,0 +1,89 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todosItems {
+  grid-column: 2 / -2;
+  grid-row: 4 / -1;
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 16px;
+
+  .todoForm {
+    height: 48px;
+
+    .inputWrapper {
+      align-items: center;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      height: 100%;
+
+      .checkedTodo {
+        @extend %checked-todo;
+
+        display: inline-block;
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        margin: 14px 20px;
+        margin-right: 12px;
+        z-index: 1;
+      }
+
+      .todoInput {
+        border-radius: 5px;
+        border: 0;
+        box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+        grid-column: 1 / -1;
+        grid-row: 1;
+        height: 100%;
+        padding-left: 52px;
+        width: 100%;
+        background-color: var(--primary-card-bg);
+
+        &::placeholder {
+          color: var(--default-line-trough);
+        }
+      }
+    }
+  }
+
+  .todoList {
+    min-height: 48px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .info {
+    align-items: center;
+    background-color: var(--primary-card-bg);
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.166667px;
+    color: var(--default-line-trough);
+    border-radius: 0 0 5px 5px;
+  }
+
+  .filter {
+    align-items: center;
+    background-color: var(--primary-card-bg);
+    border-radius: 5px;
+    color: var(--default-line-trough);
+    display: flex;
+    font-size: 14px;
+    font-weight: 700;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -0.194444px;
+    line-height: 14px;
+    margin-top: 16px;
+    padding: 0 20px;
+    column-gap: 19px;
+
+    .active {
+      color: $primary-bright-blue;
+    }
+  }
+}

@@ -12,3 +12,11 @@ $bps: (
     @content;
   }
 }
+
+%checked-todo {
+  background-color: var(--primary-card-bg);
+  border-radius: 100px;
+  border: 1px solid var(--default-checked-border);
+  height: 20px;
+  width: 20px;
+}

@@ -2,18 +2,11 @@ import React, { useState, createContext, useLayoutEffect } from 'react';
 
 import MainHero from '../../components/MainHero';
 
-type AppContextType = {
-  isDarkTheme: boolean;
-  setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export const appContext = createContext<AppContextType>({
-  isDarkTheme: false,
-  setIsDarkTheme: () => { },
-});
+export const appContext = createContext({} as App.AppContext);
 
 const AppContextProvider: React.FunctionComponent<{ children: React.ReactNode }> = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const [todos, setTodos] = useState(new Set<App.Todo>());
 
   document.documentElement.className = !isDarkTheme ? 'dark' : 'light';
 
@@ -29,7 +22,9 @@ const AppContextProvider: React.FunctionComponent<{ children: React.ReactNode }>
 
   const value = {
     isDarkTheme,
-    setIsDarkTheme
+    setIsDarkTheme,
+    todos,
+    setTodos,
   }
 
   return (

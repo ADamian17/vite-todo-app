@@ -1,7 +1,9 @@
 @use './mixins' as *;
+@use './root' as *;
 @use './themes' as *;
 @use './variables' as *;
 
+@include default-root;
 @include dark-theme-root;
 @include light-theme-root;
 

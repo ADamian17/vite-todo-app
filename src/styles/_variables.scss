@@ -5,8 +5,13 @@ $bp-desktop-lg: 1440px;
 
 /* Colors */
 $primary-bright-blue: hsl(220, 98%, 61%);
-$todo-done-bg: linear-gradient(hsl(192, 100%, 67%) to hsl(280, 87%, 65%));
+$todo-done-bg: linear-gradient(
+  135deg,
+  hsl(192, 100%, 67%) 0%,
+  hsl(280, 87%, 65%) 100%
+);
 $default-text-color: hsl(234, 39%, 85%);
+$primary-white: hsl(0, 0%, 100%);
 
 /* Light Theme */
 $very-light-gray: hsl(0, 0%, 98%);

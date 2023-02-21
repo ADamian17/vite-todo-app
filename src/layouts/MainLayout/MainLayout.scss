@@ -1,0 +1,12 @@
+@use '../../styles/mixins' as *;
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  grid-template-rows: 48px min-content 40px 48px 36.5px 1fr;
+  min-height: 100vh;
+
+  @include media-query('desktop') {
+    grid-template-columns: 1fr 540px 1fr;
+  }
+}

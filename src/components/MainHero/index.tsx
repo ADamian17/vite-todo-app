@@ -8,18 +8,26 @@ type MainHeroType = {};
 
 const MainHero: React.FC<MainHeroType> = (props) => {
   const { setIsDarkTheme, isDarkTheme } = useContext(appContext)
-  const icon = !isDarkTheme ? "icon-sun" : "icon-moon";
+  const icon = !isDarkTheme ? "sun" : "moon";
 
-  const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLOrSVGElement>) => {
     setIsDarkTheme(!isDarkTheme)
   }
 
   return (
-    <header className="bg-hero-image">
-      <h1> Todo</h1>
+    <>
+      <header className="bg-hero-image">
+      </header>
+      <nav className="nav">
+        <svg className="headline" onClick={handleClick}>
+          <use href={`/icons/main-icons.svg#todo`}></use>
+        </svg>
 
-      <img src={`/icons/${icon}.svg`} alt="icon sun" onClick={handleClick} />
-    </header>
+        <svg className="icon" onClick={handleClick}>
+          <use href={`/icons/main-icons.svg#${icon}`}></use>
+        </svg>
+      </nav>
+    </>
   )
 }
 

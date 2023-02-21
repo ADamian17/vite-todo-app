@@ -1,0 +1,24 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.checkedTodoLabel {
+  @extend %checked-todo;
+
+  align-items: center;
+  background-color: var(--primary-card-bg);
+  display: flex;
+  justify-content: center;
+
+  &.isChecked {
+    background: $todo-done-bg;
+  }
+
+  .checkedIcon {
+    width: 7.25px;
+    height: 5px;
+  }
+}
+
+.checkedTodo {
+  display: none;
+}
