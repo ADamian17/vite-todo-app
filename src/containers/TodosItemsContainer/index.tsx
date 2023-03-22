@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./TodosItemsContainer.scss"
 import Todo from "../../components/Todo";
+import { appContext } from "../../contexts/appContext";
 
 type TodosItemsContainerType = {};
 
 const TodosItemsContainer: React.FC<TodosItemsContainerType> = (props) => {
-  const todos = [
-    { done: true, title: "Complete online JavaScript course" },
-    { done: false, title: "Jog around the park 3x" },
-    { done: false, title: "10 minutes meditation" },
-    { done: false, title: "Read for 1 hour" },
-    { done: false, title: "Pick up groceries" },
-    { done: false, title: "Complete Todo App on Frontend Mentor" },
-  ]
+  const { state } = useContext(appContext)
+  console.log({ state });
+
+  const todos = [...state.todos]
   const todoList = todos.map((item, idx) => (
     <Todo key={idx} {...{ ...item, id: idx }} />
   ))

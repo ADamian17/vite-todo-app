@@ -1,12 +1,11 @@
-import React, { useState, createContext, useLayoutEffect } from 'react';
-
-import MainHero from '../../components/MainHero';
+import React, { useState, createContext, useLayoutEffect, useReducer } from 'react';
+import { appReducer, appState } from '../AppReducer';
 
 export const appContext = createContext({} as App.AppContext);
 
 const AppContextProvider: React.FunctionComponent<{ children: React.ReactNode }> = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches)
-  const [todos, setTodos] = useState(new Set<App.Todo>());
+  const [state, dispatch] = useReducer(appReducer, appState)
 
   document.documentElement.className = !isDarkTheme ? 'dark' : 'light';
 
@@ -21,10 +20,10 @@ const AppContextProvider: React.FunctionComponent<{ children: React.ReactNode }>
   }, []);
 
   const value = {
+    dispatch,
     isDarkTheme,
     setIsDarkTheme,
-    todos,
-    setTodos,
+    state,
   }
 
   return (
