@@ -5,14 +5,9 @@
   :root.dark {
     --bg-color: #{$very-dark-blue};
     --text-color: #{$default-text-color};
-    --bg-hero-image: url('/images/bg-mobile-dark.jpg');
     --color-theme: dark;
     --primary-card-bg: #{$very-dark-desaturated-blue};
     --default-checked-border: #{$very-dark-grayish-blue};
     --default-line-trough: hsl(235, 16%, 43%);
-
-    @include media-query('desktop') {
-      --bg-hero-image: url('/images/bg-desktop-dark.jpg');
-    }
   }
 }

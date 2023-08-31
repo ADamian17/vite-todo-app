@@ -1,20 +1,22 @@
 import React from 'react'
 
+import MainHero from '../../components/MainHero';
+
 import "./MainLayout.scss";
-import AppContextProvider from '../../contexts/appContext';
 
 type MainLayoutType = {
   children: React.ReactNode
 }
 
-const MainLayout: React.FC<MainLayoutType> = ({ children }) => {
-  return (
-    <AppContextProvider>
-      <div className='mainLayout'>
-        {children}
-      </div>
-    </AppContextProvider>
-  );
-}
+const MainLayout: React.FC<MainLayoutType> = ({ children }) => (
+  <main className='mainLayout'>
+    <MainHero />
+
+    <section className='main-content'>
+      {children}
+    </section>
+  </main>
+
+);
 
 export default MainLayout;

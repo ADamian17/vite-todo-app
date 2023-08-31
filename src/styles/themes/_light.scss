@@ -5,14 +5,9 @@
   :root.light {
     --bg-color: #{$light-grayish-blue};
     --text-color: #{$default-text-color-light};
-    --bg-hero-image: url('/images/bg-mobile-light.jpg');
     --color-theme: light;
     --primary-card-bg: #{$primary-white};
     --default-checked-border: #{$very-light-grayish-blue};
     --default-line-trough: hsl(236, 9%, 61%);
-
-    @include media-query('desktop') {
-      --bg-hero-image: url('/images/bg-desktop-light.jpg');
-    }
   }
 }

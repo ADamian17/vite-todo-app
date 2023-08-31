@@ -3,6 +3,8 @@
 
 $bps: (
   'mobile': $bp-mobile,
+  'mobile-lg': $bp-mobile-lg,
+  'tablet': $bp-tablet,
   'desktop': $bp-desktop,
   'desktop-lg': $bp-desktop-lg,
 );
@@ -10,6 +12,12 @@ $bps: (
 @mixin media-query($target) {
   @media screen and (min-width: #{map.get($bps, $target)}) {
     @content;
+  }
+}
+
+@mixin set-hero-bg($bg) {
+  @include media-query('mobile-lg') {
+    --bg-hero-image: url(#{$bg});
   }
 }
 
