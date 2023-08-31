@@ -4,20 +4,24 @@ import "./styles.css"
 
 const DataListInput: React.FC = (props) => {
   const [val, setVal] = useState('');
-  const [showList, setShowList] = useState(false)
-
-
-  const handleShowList = () => {
-    setShowList(prev => !prev);
-  }
+  const [inFocus, setInFocus] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVal(e.target.value)
   }
 
-  const handleOptionClick = (e: React.MouseEvent<HTMLLIElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => (
     setVal(e.currentTarget.dataset["value"]!)
-    setShowList(false)
+  )
+
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    setInFocus(true)
+  }
+
+  const setInnerCopy = (strToReplace: string, str: string) => {
+    if (str.length <= 0) return strToReplace
+
+    return strToReplace.toLowerCase().replace(str, `<b>${str}</b>`)
   }
 
   const options = [
@@ -26,35 +30,43 @@ const DataListInput: React.FC = (props) => {
     "Mint",
     "Strawberry",
     "Vanilla"
-  ].filter(option => option.toLowerCase().includes(
-    val.toLowerCase()
+  ].filter(option => {
+    const selectedStr = val.toLowerCase();
+    const currentStr = option.toLowerCase();
+
+    return (
+      selectedStr &&
+      currentStr.startsWith(selectedStr) &&
+      currentStr !== selectedStr
+    );
+  }).map(item => (
+    <li
+      key={item}
+      role="presentation"
+    >
+      <p
+        data-value={item}
+        onClick={handleClick}
+        dangerouslySetInnerHTML={{
+          __html: setInnerCopy(item, val)
+        }} />
+    </li>
   ))
 
   return (
-    <>
-      <h1>HTML5 datalist styling demonstration</h1>
+    <div>
+      <input
+        id="browser"
+        name="browser"
+        value={val}
+        onChange={handleChange}
+        onFocus={handleFocus}
+      />
 
-      <form id="autoform">
-        {/* must be first element after input and use <option>value</option> format */}
-        <label htmlFor="browser">browser:</label>
-        <input list="browserdata" id="browser" name="browser" size={50} autoComplete="off" />
-
-        <datalist id="browserdata">
-          <option>Brave</option>
-          <option>Chrome</option>
-          <option>Edge</option>
-          <option>Firefox</option>
-          <option>Internet Explorer</option>
-          <option>Opera</option>
-          <option>Safari</option>
-          <option>Vivaldi</option>
-          <option>other</option>
-        </datalist>
-
-        <button type="submit">submit</button>
-
-      </form>
-    </>
+      <menu role="listbox">
+        {options}
+      </menu>
+    </div>
   )
 }
 
