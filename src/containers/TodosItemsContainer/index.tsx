@@ -9,7 +9,18 @@ type TodosItemsContainerType = {};
 const TodosItemsContainer: React.FC<TodosItemsContainerType> = (props) => {
   // const { state } = useContext(appContext)
 
-  const todos = []
+  const todos = [
+    {
+      done: true,
+      title: 'Complete online JavaScript course',
+      id: 1,
+    },
+    {
+      done: false,
+      title: 'Complete online JavaScript course',
+      id: 1,
+    },
+  ]
   // const todos = [...state.todos]
   const todoList = todos.map((item, idx) => (
     <Todo key={idx} {...{ ...item, id: idx }} />
@@ -34,7 +45,7 @@ const TodosItemsContainer: React.FC<TodosItemsContainerType> = (props) => {
       <div className="todoList">
         {todoList}
 
-        <div className="info">
+        {/* <div className="info">
           <span>
             {itemsStr}
           </span>
@@ -48,7 +59,7 @@ const TodosItemsContainer: React.FC<TodosItemsContainerType> = (props) => {
           <span>Active</span>
 
           <span>Completed</span>
-        </div>
+        </div> */}
       </div>
     </section>
   )
