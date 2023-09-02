@@ -1,3 +1,10 @@
+export const themeOptions = {
+  false: 'light',
+  true: 'dark',
+} as const;
+
+export type ThemeOpts = (typeof themeOptions)[keyof typeof themeOptions];
+
 export const darkTheme = {
   heroImage: {
     mobile: 'bg-mobile-dark.jpg',

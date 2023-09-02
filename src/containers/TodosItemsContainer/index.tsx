@@ -7,10 +7,10 @@ import { appContext } from "../../contexts/appContext";
 type TodosItemsContainerType = {};
 
 const TodosItemsContainer: React.FC<TodosItemsContainerType> = (props) => {
-  const { state } = useContext(appContext)
-  console.log({ state });
+  // const { state } = useContext(appContext)
 
-  const todos = [...state.todos]
+  const todos = []
+  // const todos = [...state.todos]
   const todoList = todos.map((item, idx) => (
     <Todo key={idx} {...{ ...item, id: idx }} />
   ))

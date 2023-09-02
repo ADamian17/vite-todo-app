@@ -13,7 +13,12 @@
   .icon {
     fill: currentColor;
     width: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
+
   .headline,
   .icon {
     height: 20px;

@@ -2,23 +2,24 @@
 
 .mainLayout {
   display: grid;
-  // grid-template-columns: 24px 1fr 24px;
-  grid-template-rows: 172.5px 1fr;
+  grid-template-rows: 200px 1fr;
   // grid-template-rows: 48px min-content 40px 48px 36.5px 1fr;
   min-height: 100vh;
 
   .main-content {
     grid-column: 1 / -1;
     grid-row: 1 / span 2;
-    padding: 0 24px;
+    padding: 48px 24px 0;
     width: 100%;
     max-width: 540px;
     justify-self: center;
   }
 
   @include media-query('tablet') {
+    grid-template-rows: 300px 1fr;
+
     .main-content {
-      padding: 0;
+      padding: 70px 0 0;
     }
   }
 

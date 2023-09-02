@@ -8,32 +8,16 @@ import useThemeStore from './zustand/useThemeStore';
 import "./styles/main.scss";
 
 function App() {
-  const { setIsDarkTheme } = useThemeStore(state => state);
+  const { isDarkTheme, setIsDarkTheme } = useThemeStore(state => state);
 
   useLayoutEffect(() => {
-    setIsDarkTheme(window
-      .matchMedia('(prefers-color-scheme: dark)').matches)
-  }, []);
-
-  useEffect(() => {
-    const handleColorTheme = (e: MediaQueryListEvent) => {
-      if (e.matches) {
-        setIsDarkTheme(true)
-        return;
-      }
-
-      setIsDarkTheme(false);
-    };
-
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', handleColorTheme);
+    setIsDarkTheme()
   }, []);
 
   return (
     <MainLayout>
       <MainNav />
-      {/* <TodosItemsContainer /> */}
+      <TodosItemsContainer />
     </MainLayout>
   )
 }

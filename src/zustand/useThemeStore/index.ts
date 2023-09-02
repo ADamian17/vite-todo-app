@@ -11,7 +11,7 @@ import {
 type ThemeState = LightTheme | DarkTheme;
 
 type ThemeActions = {
-  setIsDarkTheme: (isDark: ThemeState['isDarkTheme']) => void;
+  setIsDarkTheme: (isDark?: ThemeState['isDarkTheme']) => void;
 };
 
 const useThemeStore = create(
@@ -21,8 +21,8 @@ const useThemeStore = create(
       setIsDarkTheme: (isDark) => {
         if (isDark) {
           document.documentElement.className = 'dark';
-
-          return set(darkTheme);
+          set(darkTheme);
+          return;
         }
 
         document.documentElement.className = 'light';
